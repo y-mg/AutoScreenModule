@@ -1,3 +1,3 @@
 include ':AutoScreenModule'
 include ':app'
-rootProject.name = "AuthScreenView"
+rootProject.name = "AutoScreenView"
