@@ -3,19 +3,19 @@ package com.ymg.autoscreenview.recycler
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ymg.autoscreenmodule.AutoScreenDestiny
 import com.ymg.autoscreenmodule.AutoScreenUtil
-import com.ymg.autoscreenview.R
 import com.ymg.autoscreenview.base.BasicActivity
-import kotlinx.android.synthetic.main.activity_recycler.*
-import kotlinx.android.synthetic.main.activity_recycler_item.view.*
+import com.ymg.autoscreenview.databinding.ActivityRecyclerBinding
+import com.ymg.autoscreenview.databinding.ActivityRecyclerItemBinding
+
 
 class RecyclerActivity : BasicActivity() {
 
+    private lateinit var viewBinding: ActivityRecyclerBinding
     private lateinit var recyclerAdapter: RecyclerAdapter
     private lateinit var listItems: MutableList<String>
 
@@ -23,12 +23,13 @@ class RecyclerActivity : BasicActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recycler)
+        viewBinding = ActivityRecyclerBinding.inflate(layoutInflater)
+        setContentView(viewBinding.root)
 
         AutoScreenDestiny.setActivityScreen(this)
 
         recyclerAdapter = RecyclerAdapter()
-        recyclerView.adapter = recyclerAdapter
+        viewBinding.recyclerView.adapter = recyclerAdapter
 
         listItems = mutableListOf()
         listItems.apply {
@@ -66,13 +67,11 @@ class RecyclerActivity : BasicActivity() {
 
 
     inner class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
-        inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            val textView: AppCompatTextView = view.textView
-        }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val v = LayoutInflater.from(parent.context).inflate(R.layout.activity_recycler_item, parent, false)
-            return ViewHolder(v).apply {
+            val viewBinding = ActivityRecyclerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
+            return ViewHolder(viewBinding).apply {
                 AutoScreenUtil.auto(this.itemView)
             }
         }
@@ -84,6 +83,12 @@ class RecyclerActivity : BasicActivity() {
 
         override fun getItemCount(): Int {
             return listItems.size
+        }
+
+
+
+        inner class ViewHolder(viewBinding: ActivityRecyclerItemBinding) : RecyclerView.ViewHolder(viewBinding.root) {
+            val textView: AppCompatTextView = viewBinding.textView
         }
     }
 }
