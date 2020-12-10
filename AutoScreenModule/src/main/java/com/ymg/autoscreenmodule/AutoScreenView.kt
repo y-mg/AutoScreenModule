@@ -5,11 +5,26 @@ import android.util.DisplayMetrics
 import android.view.View
 
 
+
+/**
+ * @author y-mg
+ *
+ * 이것은 화면을 해상도에 맞게 자동으로 설정해주는 Object 클래스입니다.
+ * This is an Object Class that automatically sets the screen to the resolution.
+ */
 @Suppress("DEPRECATION")
-object AutoScreenDestiny {
-    
+object AutoScreenView {
+
+    /**
+     * - Activity 의 밀도를 자동으로 설정한다.
+     * - The density of the Activity is automatically set.
+     *
+     * @param activity -> Activity
+     *
+     * @param hasStatusBar -> Status bar Status
+     */
     @Suppress("DEPRECATION")
-    fun setActivityScreen(activity: Activity, hasStatusBar: Boolean = true) {
+    fun setActivityView(activity: Activity, hasStatusBar: Boolean = true) {
         val displayMetrics = DisplayMetrics()
         activity.windowManager?.defaultDisplay?.getMetrics(displayMetrics)
 
@@ -106,8 +121,18 @@ object AutoScreenDestiny {
     }
 
 
-    
-    fun setFragmentScreen(activity: Activity, view: View?, hasStatusBar: Boolean = true) {
+
+    /**
+     * - Fragment 의 밀도를 자동으로 설정한다.
+     * - The density of the Fragment is automatically set.
+     *
+     * @param activity -> Activity
+     *
+     * @param view -> View of Fragment
+     *
+     * @param hasStatusBar -> Status bar Status
+     */
+    fun setFragmentView(activity: Activity, view: View?, hasStatusBar: Boolean = true) {
         val displayMetrics = DisplayMetrics()
         activity.windowManager?.defaultDisplay?.getMetrics(displayMetrics)
 
@@ -200,6 +225,18 @@ object AutoScreenDestiny {
                 AutoScreenUtil.setSize(activity, hasStatusBar, displayMetrics.widthPixels, displayMetrics.heightPixels)
             }
         }
+        AutoScreenUtil.auto(view)
+    }
+
+
+
+    /**
+     * - ItemView 의 밀도를 자동으로 설정한다.
+     * - The density of the ItemView is automatically set.
+     *
+     * @param view -> Item View
+     */
+    fun setItemView(view: View?) {
         AutoScreenUtil.auto(view)
     }
 }

@@ -4,26 +4,45 @@
 
 
 
-## 1. AutoScreenDestiny
+## 1. AutoScreenView
 
-### Kotlin
-
-| Function | Parameter | Description |
-|:----------|:----------|:----------|
-| setActivityScreen(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;activity: Activity,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hasStatusBar: Boolean = true<br/>) | Activity,<br/>상태바 유무 | Activity 해상도 자동 설정<br/>(Use Activity) |
-| setFragmentScreen(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;activity: Activity,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view: View?,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hasStatusBar: Boolean = true<br/>) | Fragment,<br/>View,<br/>상태바 유무 | Fragment 해상도 자동 설정<br/>(Use Fragment) |
-<br/>
-<br/>
+> 이것은 화면을 해상도에 맞게 자동으로 설정해주는 Object 클래스입니다.<br/>
+> This is an Object Class that automatically sets the screen to the resolution.
 
 
+### Kotlin Function
 
-## 2. AutoScreenUtil
+```kotlin
+/**
+ * - Activity 의 밀도를 자동으로 설정한다.
+ * - The density of the Activity is automatically set.
+ *
+ * @param activity -> Activity
+ *
+ * @param hasStatusBar -> Status bar Status
+ */
+fun setActivityView(activity: Activity, hasStatusBar: Boolean)
 
-### Kotlin
+/**
+ * - Fragment 의 밀도를 자동으로 설정한다.
+ * - The density of the Fragment is automatically set.
+ *
+ * @param activity -> Activity
+ *
+ * @param view -> View of Fragment
+ *
+ * @param hasStatusBar -> Status bar Status
+ */
+fun setFragmentView(activity: Activity, view: View?, hasStatusBar: Boolean)
 
-| Function | Parameter | Description |
-|:----------|:----------|:----------|
-| auto(<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view: View?<br/>) | View | View 해상도 자동 설정<br/>(Use RecyclerView) |
+/**
+ * - ItemView 의 밀도를 자동으로 설정한다.
+ * - The density of the ItemView is automatically set.
+ *
+ * @param view -> Item View
+ */
+fun setItemView(view: View?)
+```
 <br/>
 <br/>
 

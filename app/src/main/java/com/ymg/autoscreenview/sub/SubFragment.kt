@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.ymg.autoscreenmodule.AutoScreenDestiny
+import com.ymg.autoscreenmodule.AutoScreenView
 import com.ymg.autoscreenview.databinding.FragmentSubBinding
 
 
@@ -26,6 +26,6 @@ class SubFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        AutoScreenDestiny.setFragmentScreen(requireActivity(), view)
+        AutoScreenView.setFragmentView(requireActivity(), view)
     }
 }

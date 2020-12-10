@@ -3,7 +3,7 @@ package com.ymg.autoscreenview.main
 
 import android.content.Intent
 import android.os.Bundle
-import com.ymg.autoscreenmodule.AutoScreenDestiny
+import com.ymg.autoscreenmodule.AutoScreenView
 import com.ymg.autoscreenview.base.BasicActivity
 import com.ymg.autoscreenview.databinding.ActivityMainBinding
 import com.ymg.autoscreenview.recycler.RecyclerActivity
@@ -20,7 +20,7 @@ class MainActivity : BasicActivity() {
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        AutoScreenDestiny.setActivityScreen(this)
+        AutoScreenView.setActivityView(this)
 
         viewBinding.button01.setOnClickListener {
             startActivity(Intent(this, SubActivity::class.java))

@@ -12,6 +12,14 @@ import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.sqrt
 
+
+
+/**
+ * @author y-mg
+ *
+ * 이것은 View 의 각 속성을 해상도에 맞게 자동으로 설정해주는 Object 클래스입니다.
+ * This is an Object Class that automatically sets each property in the view to fit its resolution.
+ */
 object AutoScreenUtil {
 
     private var displayWidth = 0
@@ -24,8 +32,11 @@ object AutoScreenUtil {
 
 
 
+    /**
+     * Setting Display Size
+     */
     @Suppress("DEPRECATION")
-    fun setSize(
+    internal fun setSize(
         act: Activity?,
         hasStatusBar: Boolean,
         designWidth: Int,
@@ -61,6 +72,9 @@ object AutoScreenUtil {
 
 
 
+    /**
+     * Setting StatusBar Height
+     */
     private fun getStatusBarHeight(context: Context): Int {
         var result = 0
 
@@ -81,8 +95,10 @@ object AutoScreenUtil {
 
 
 
-    // Use Activity
-    fun auto(act: Activity?) {
+    /**
+     * Setting Activity
+     */
+    internal fun auto(act: Activity?) {
         if (act == null || displayWidth < 1 || displayHeight < 1) {
             return
         }
@@ -91,8 +107,10 @@ object AutoScreenUtil {
         auto(view)
     }
 
-    // Use Fragment
-    fun auto(view: View?) {
+    /**
+     * Setting Fragment
+     */
+    internal fun auto(view: View?) {
         if (view == null || displayWidth < 1 || displayHeight < 1) {
             return
         }
@@ -107,6 +125,9 @@ object AutoScreenUtil {
         }
     }
 
+    /**
+     * Setting ViewGroup
+     */
     private fun auto(viewGroup: ViewGroup) {
         val count = viewGroup.childCount
         for (i in 0 until count) {
@@ -121,6 +142,9 @@ object AutoScreenUtil {
 
 
 
+    /**
+     * Setting Margin
+     */
     private fun autoMargin(view: View) {
         if (view.layoutParams !is MarginLayoutParams) {
             return
@@ -145,6 +169,11 @@ object AutoScreenUtil {
             )
     }
 
+
+
+    /**
+     * Setting Padding
+     */
     private fun autoPadding(view: View) {
         var l = view.paddingLeft
         var t = view.paddingTop
@@ -169,6 +198,11 @@ object AutoScreenUtil {
         view.setPadding(l, t, r, b)
     }
 
+
+
+    /**
+     * Setting Size(Width, Height)
+     */
     private fun autoSize(view: View) {
         val lp = view.layoutParams ?: return
 
@@ -204,6 +238,11 @@ object AutoScreenUtil {
         }
     }
 
+
+
+    /**
+     * Setting Text Size
+     */
     private fun autoTextSize(view: View?) {
         if (view is TextView) {
             val designPixels = view.textSize.toDouble()
@@ -218,6 +257,9 @@ object AutoScreenUtil {
 
 
 
+    /**
+     * Getting Display Width
+     */
     private fun getDisplayWidthValue(designWidthValue: Int): Int {
         return if (abs(designWidthValue) < 2) {
             designWidthValue
@@ -227,6 +269,10 @@ object AutoScreenUtil {
     }
 
 
+
+    /**
+     * Getting Display Height
+     */
     private fun getDisplayHeightValue(designHeightValue: Int): Int {
         return if (abs(designHeightValue) < 2) {
             designHeightValue

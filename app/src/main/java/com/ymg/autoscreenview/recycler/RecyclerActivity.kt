@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
-import com.ymg.autoscreenmodule.AutoScreenDestiny
-import com.ymg.autoscreenmodule.AutoScreenUtil
+import com.ymg.autoscreenmodule.AutoScreenView
+import com.ymg.autoscreenmodule.AutoScreenView.setItemView
 import com.ymg.autoscreenview.base.BasicActivity
 import com.ymg.autoscreenview.databinding.ActivityRecyclerBinding
 import com.ymg.autoscreenview.databinding.ActivityRecyclerItemBinding
@@ -26,7 +26,7 @@ class RecyclerActivity : BasicActivity() {
         viewBinding = ActivityRecyclerBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        AutoScreenDestiny.setActivityScreen(this)
+        AutoScreenView.setActivityView(this)
 
         recyclerAdapter = RecyclerAdapter()
         viewBinding.recyclerView.adapter = recyclerAdapter
@@ -72,7 +72,7 @@ class RecyclerActivity : BasicActivity() {
             val viewBinding = ActivityRecyclerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
             return ViewHolder(viewBinding).apply {
-                AutoScreenUtil.auto(this.itemView)
+                setItemView(this.itemView)
             }
         }
 

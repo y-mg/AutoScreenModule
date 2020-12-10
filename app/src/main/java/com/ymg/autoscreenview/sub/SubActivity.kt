@@ -2,7 +2,7 @@ package com.ymg.autoscreenview.sub
 
 
 import android.os.Bundle
-import com.ymg.autoscreenmodule.AutoScreenDestiny
+import com.ymg.autoscreenmodule.AutoScreenView
 import com.ymg.autoscreenview.R
 import com.ymg.autoscreenview.base.BasicActivity
 import com.ymg.autoscreenview.databinding.ActivitySubBinding
@@ -19,7 +19,7 @@ class SubActivity : BasicActivity() {
         viewBinding = ActivitySubBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        AutoScreenDestiny.setActivityScreen(this)
+        AutoScreenView.setActivityView(this)
 
         supportFragmentManager
             .beginTransaction()
