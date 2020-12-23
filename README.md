@@ -4,6 +4,30 @@
 
 
 
+## Install
+[![](https://jitpack.io/v/y-mg/autoscreenmodule.svg)](https://jitpack.io/#y-mg/autoscreenmodule)
+
+Add Jitpack to your repositories in your `build.gradle` file
+
+```groovy
+allprojects {
+    repositories {
+      // ...
+      maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+Add the below to your dependencies, again in your gradle.build file
+
+```groovy
+implementation 'com.github.y-mg:autoscreenmodule:{version}'
+```
+<br/>
+<br/>
+
+
+
 ## 1. AutoScreenView
 
 > 이것은 화면을 해상도에 맞게 자동으로 설정해주는 Object 클래스입니다.<br/>
